@@ -1,15 +1,30 @@
 
+import java.awt.Image;
 import java.util.ArrayList;
 
 public class Person extends LivingEntity {
-    private String name;
-    private Image image;
-    private ArrayList<Pet> pets;
-    private ArrayList<Possession> possessions;
-    public Person (String name, Image image){
-        this.name=name;
-        this.image=image;
-    }
+// Data
+
+	private String name;
+	private Image img; 
+	private ArrayList<Possession> possessions;
+	private ArrayList<Pet> pets;
+	private ArrayList<Moment> moments;
+	
+// Constructor
+	
+	/**
+	 * Sets the person's profile information.
+	 * @param name
+	 * @param img
+	 */
+	public Person(String name, Image img) 
+	{
+		super(name, img);
+		this.name = name; 
+		this.img = img;
+	}
+	
 
     public void setPossessions(ArrayList<Possession> possessions) {
         this.possessions = possessions;
@@ -19,20 +34,16 @@ public class Person extends LivingEntity {
         this.pets = pets;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
     public Image getImage() {
-        return image;
+        return img;
     }
 
     public void setImage(Image image) {
-        this.image = image;
+        img = image;
     }
 
     public ArrayList<Pet> getPets() {
