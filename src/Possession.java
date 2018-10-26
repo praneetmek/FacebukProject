@@ -1,4 +1,3 @@
-import java.awt.Image;
 
 public class Possession {
 //Data
@@ -25,7 +24,7 @@ public class Possession {
 
     /**
      * Returns the price of the possession
-     * @return
+     * @return price
      */
     public float getPrice() {
         return price;

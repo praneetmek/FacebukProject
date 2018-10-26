@@ -15,10 +15,7 @@ public class LivingEntity {
         return friends;
     }
 
-    public void addFriend(Person friend){
-        friends.add(friend);
-    }
-    public void addFriend(Pet friend){
-        friends.add(friend);
+    public void addFriend(LivingEntity le){
+        friends.add(le);
     }
 }

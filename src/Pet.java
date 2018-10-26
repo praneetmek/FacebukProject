@@ -14,4 +14,7 @@ public class Pet extends LivingEntity {
     public void setOwner(Person owner) {
         this.owner = owner;
     }
+    public boolean equals(Pet pet){
+        return name.equals(pet.name);
+    }
 }

@@ -42,4 +42,7 @@ public class Person extends LivingEntity {
     public ArrayList<Possession> getPossessions() {
         return possessions;
     }
+    public boolean equals(Person person){
+        return name.equals(person.name);
+    }
 }
