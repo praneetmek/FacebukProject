@@ -139,6 +139,11 @@ public class FacebukPartialTester {
 
 	@Test
 	public void testEquals () {
+		System.out.println(_michelle.getName());
+		Person person= new Person("Michelle", new Image("Michelle.png"));
+		System.out.println(person.getName());
+		System.out.println(_michelle.equals(new Person("Michelle", new Image("Michelle.png"))));
+
 		assertEquals(_michelle, new Person("Michelle", new Image("Michelle.png")));
 		assertEquals(_michelle, new Person("Michelle", new Image("Michelle2.png")));  // should still work
 		assertNotEquals(_michelle, _barack);
@@ -148,11 +153,11 @@ public class FacebukPartialTester {
 //	public void testFindBestMoment () {
 //		assertEquals(_michelle.getOverallHappiestMoment(), _meAndBarack);
 //	}
-//
-//	@Test
-//	public void testGetFriendWithWhomIAmHappiest () {
-//		assertEquals(_michelle.getFriendWithWhomIAmHappiest(), _barack);
-//	}
+
+	@Test
+	public void testGetFriendWithWhomIAmHappiest () {
+		assertEquals(_michelle.getFriendWithWhomIAmHappiest(), _barack);
+	}
 
 	@Test
 	public void testFriendRequest1 () {

@@ -4,7 +4,7 @@ public class LivingEntity
 {
 // Data
 	
-	private String _name;
+	protected String _name;
 	private Image _img;
 	private ArrayList<LivingEntity> _friends;
 	private ArrayList<Moment> _moments;
@@ -42,7 +42,7 @@ public class LivingEntity
 	}
 
 	/**
-	 * Takes in a living entity and finds the overall happiness with that living entity
+	 * Takes in a living entity and finds the average happiness with that living entity
 	 * @param livingEntity
 	 * @return
 	 */
@@ -52,27 +52,36 @@ public class LivingEntity
 		float sum=0;
 		for (Moment moment : _moments)
 		{
-			for (int i=0; i<moment.getParticipants().size(); i++){
-				if (moment.getParticipants().get(i).equals(livingEntity)){
-					happinessValues.add(moment.getSmileValues().get(i));
-				}
-			}
+		    int myIndex=moment.getParticipants().indexOf(this);
+			for (LivingEntity livingEntity1: moment.getParticipants()){
+			    if(livingEntity.equals(livingEntity1)){
+			        happinessValues.add(moment.getSmileValues().get(myIndex));
+                }
+            }
 		}
 		for (Float f:happinessValues) {
 			sum+=f;
 		}
-		return sum/(float)happinessValues.size();
-
+		if(happinessValues.size()==0){
+            return 0;
+		}
+		else {
+            return sum / (float) happinessValues.size();
+        }
 	}
 	
 	public LivingEntity getFriendWithWhomIAmHappiest() 
 	{
-		LivingEntity friend; 
-		for(int x = 0; x< _friends.size(); x++)
-		{
-			
+		LivingEntity friendIAmHappiestWith=null;
+		float highestAverageHappiness=-Float.MAX_VALUE;
+
+		for(LivingEntity livingEntity:_friends){
+			if(getAverageHappiness(livingEntity)>highestAverageHappiness){
+				friendIAmHappiestWith=livingEntity;
+				highestAverageHappiness=getAverageHappiness(livingEntity);
+			}
 		}
-		return null;
+		return friendIAmHappiestWith;
 	}
 	
 	public Moment getOverallHappiestMoment() 

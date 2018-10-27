@@ -1,10 +1,9 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Person extends LivingEntity {
 // Data
 
-	private String name;
-	private Image img; 
 	private ArrayList<Possession> possessions;
 	private ArrayList<Pet> pets;
 	
@@ -18,8 +17,7 @@ public class Person extends LivingEntity {
 	public Person(String name, Image img) 
 	{
 		super(name, img);
-		this.name = name; 
-		this.img = img;
+
 	}
 	
 
@@ -31,17 +29,6 @@ public class Person extends LivingEntity {
         this.pets = pets;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Image getImage() {
-        return img;
-    }
-
-    public void setImage(Image image) {
-        img = image;
-    }
 
     public ArrayList<Pet> getPets() {
         return pets;
@@ -50,8 +37,19 @@ public class Person extends LivingEntity {
     public ArrayList<Possession> getPossessions() {
         return possessions;
     }
-    public boolean equals(Person person){
-        return name.equals(person.getName());
+
+    @Override
+    public boolean equals(Object o) {
+	    if(o instanceof Person) {
+            Person personOfObject = (Person) o;
+            return _name.equals(personOfObject.getName());
+        }
+        else
+            return false;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(_name);
+    }
 }
