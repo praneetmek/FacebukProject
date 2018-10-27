@@ -1,21 +1,29 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Pet extends LivingEntity {
 
-    private final String _name;
-    private final Image _image;
     private Person _owner;
     public Pet (String name, Image image){
         super(name, image);
-        _name=name;
-        _image=image;
     }
     public void setOwner(Person owner)
     {
         _owner = owner;
     }
-    public boolean equals(Pet pet){
-        return _name.equals(pet.getName());
+    @Override
+    public boolean equals(Object o) {
+        if(o instanceof Person) {
+            Person personOfObject = (Person) o;
+            return _name.equals(personOfObject.getName());
+        }
+        else
+            return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(_name);
     }
 
 

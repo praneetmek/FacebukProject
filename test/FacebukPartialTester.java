@@ -149,10 +149,10 @@ public class FacebukPartialTester {
 		assertNotEquals(_michelle, _barack);
 	}
 
-//	@Test
-//	public void testFindBestMoment () {
-//		assertEquals(_michelle.getOverallHappiestMoment(), _meAndBarack);
-//	}
+	@Test
+	public void testFindBestMoment () {
+		assertEquals(_michelle.getOverallHappiestMoment(), _meAndBarack);
+	}
 
 	@Test
 	public void testGetFriendWithWhomIAmHappiest () {

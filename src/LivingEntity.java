@@ -86,7 +86,19 @@ public class LivingEntity
 	
 	public Moment getOverallHappiestMoment() 
 	{
-		return null;
+		Moment happiestMoment=null;
+		float highestAverageHappiness=-Float.MAX_VALUE;
+		for (Moment moment:_moments) {
+			float sum=0;
+			for (Float f: moment.getSmileValues()) {
+				sum+=f;
+			}
+			if ((sum/(float) moment.getSmileValues().size())>highestAverageHappiness){
+				highestAverageHappiness=sum/(float) moment.getSmileValues().size();
+				happiestMoment=moment;
+			}
+		}
+		return happiestMoment;
 	}
 	
 }
