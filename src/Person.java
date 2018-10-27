@@ -1,5 +1,3 @@
-
-import java.awt.Image;
 import java.util.ArrayList;
 
 public class Person extends LivingEntity {
@@ -9,7 +7,6 @@ public class Person extends LivingEntity {
 	private Image img; 
 	private ArrayList<Possession> possessions;
 	private ArrayList<Pet> pets;
-	private ArrayList<Moment> moments;
 	
 // Constructor
 	
@@ -54,6 +51,7 @@ public class Person extends LivingEntity {
         return possessions;
     }
     public boolean equals(Person person){
-        return name.equals(person.name);
+        return name.equals(person.getName());
     }
+
 }

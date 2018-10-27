@@ -1,17 +1,17 @@
 public class FriendRequest {
-    LivingEntity le1;
-    LivingEntity le2;
+    LivingEntity _le1;
+    LivingEntity _le2;
     Boolean entity1=false;
     public FriendRequest(LivingEntity a, LivingEntity b) {
-        le1=a;
-        le2=b;
+        _le1=a;
+        _le2=b;
     }
     private void addFriends(){
-        le1.addFriend(le2);
-        le2.addFriend(le1);
+        _le1.addFriend(_le2);
+        _le2.addFriend(_le1);
     }
     public void approve(LivingEntity le) {
-        if (le.equals(le1) || le.equals(le2)){
+        if (le.equals(_le1) || le.equals(_le2)){
             if (entity1 == true) {
                 addFriends();
             } else {

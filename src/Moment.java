@@ -16,4 +16,12 @@ public class Moment {
     public boolean equals(Moment moment){
         return name.equals(moment.name);
     }
+
+    public ArrayList<LivingEntity> getParticipants() {
+        return participants;
+    }
+
+    public ArrayList<Float> getSmileValues() {
+        return smileValues;
+    }
 }
