@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class LivingEntity 
 {
@@ -25,7 +26,7 @@ public class LivingEntity
 		return _name;
 	}
 	
-	public ArrayList getFriends() {
+	public ArrayList<LivingEntity> getFriends() {
 		return _friends;
 	}
 	
@@ -39,6 +40,27 @@ public class LivingEntity
 	
 	public void addFriend(LivingEntity friend) {
 		_friends.add(friend);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o instanceof LivingEntity) {
+			LivingEntity oToLivingEntity=(LivingEntity) o;
+			if(_name==oToLivingEntity.getName()){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		else{
+			return false;
+		}
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(_name);
 	}
 
 	/**
@@ -100,5 +122,63 @@ public class LivingEntity
 		}
 		return happiestMoment;
 	}
-	
+	public ArrayList findMaximumCliqueOfFriends(){
+		ArrayList<MaximalClique> allMaximalcliques = new ArrayList<MaximalClique>();
+		MaximalClique maximumClique=new MaximalClique();
+		int largestClique=0;
+		for(LivingEntity livingEntity:_friends){
+			allMaximalcliques.add(createMaximalClique(livingEntity));
+		}
+		for(MaximalClique maximalClique: allMaximalcliques){
+			if(maximalClique.size()>largestClique){
+				maximumClique=maximalClique;
+				largestClique=maximalClique.size();
+			}
+		}
+		return maximumClique.get_listOfMembers();
+
+
+	}
+	private MaximalClique createMaximalClique(LivingEntity friend){
+		MaximalClique maximalClique=new MaximalClique();
+		ArrayList<LivingEntity> temporaryCliqueAdd;
+		for(LivingEntity possibleMemberOfClique:_friends){
+			temporaryCliqueAdd=maximalClique.get_listOfMembers();
+			temporaryCliqueAdd.add(this);
+			if(!possibleMemberOfClique.equals(friend)){
+				temporaryCliqueAdd.add(possibleMemberOfClique);
+				if(isClique(temporaryCliqueAdd)){
+					maximalClique.add(possibleMemberOfClique);
+				}
+			}
+		}
+		return maximalClique;
+	}
+	public static boolean isClique(ArrayList<LivingEntity> listOfPossibleCliqueMembers){
+		boolean isClique=true;
+		while(isClique){
+			for (LivingEntity cliqueMember : listOfPossibleCliqueMembers) {
+				ArrayList<LivingEntity> friendsOfCliqueMember=cliqueMember.getFriends();
+				for(LivingEntity possibleFriendOfCliqueMember: listOfPossibleCliqueMembers){
+					if(!possibleFriendOfCliqueMember.equals(cliqueMember)){
+						System.out.println("CliqueMember:"+cliqueMember.getName()+" PossibleFriend: "+possibleFriendOfCliqueMember.getName());
+						if(friendsOfCliqueMember==null){
+							isClique = false;
+						}
+						else if(!friendsOfCliqueMember.contains(possibleFriendOfCliqueMember)) {
+							System.out.println(false);
+							isClique = false;
+						}
+						else{
+							System.out.println(true);
+						}
+					}
+				}
+
+			}
+			break;
+		}
+
+		return isClique;
+	}
 }

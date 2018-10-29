@@ -38,18 +38,5 @@ public class Person extends LivingEntity {
         return possessions;
     }
 
-    @Override
-    public boolean equals(Object o) {
-	    if(o instanceof Person) {
-            Person personOfObject = (Person) o;
-            return _name.equals(personOfObject.getName());
-        }
-        else
-            return false;
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(_name);
-    }
 }

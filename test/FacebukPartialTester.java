@@ -13,7 +13,7 @@ public class FacebukPartialTester {
 	private Person _barack, _michelle, _kevin, _ina, _joe, _malia;
 	private Pet _bo, _sunny;
 	private Moment _meAndBarack;
-	private ArrayList _michelleAndBarack, _michelleJoeBoAndMalia;
+	private ArrayList _michelleAndBarack, _michelleJoeBoAndMalia, _maliaAndBo;
 
 	@Before
 	public void setUp () {
@@ -66,12 +66,16 @@ public class FacebukPartialTester {
 		maliaAndSunny.add(_malia);
 		maliaAndSunny.add(_sunny);
 
+		// Malia and Bo
+		_maliaAndBo=new ArrayList();
+		_maliaAndBo.add(_malia);
+		_maliaAndBo.add(_bo);
 		// Michelle
 		final ArrayList michelleList = new ArrayList();
 		michelleList.add(_michelle);
 
 		// Bo
-		final ArrayList boList = new ArrayList();
+		final ArrayList boList = new ArrayList<LivingEntity>();
 		boList.add(_bo);
 
 		// Set people's friend lists
@@ -186,6 +190,14 @@ public class FacebukPartialTester {
 	// TODO: write more methods to test getFriendWithWhomIAmHappiest 
 	// TODO: write more methods to test getOverallHappiestMoment 
 	
-	// TODO: write methods to test isClique 
+	// TODO: write methods to test isClique
+	@Test
+	public void testIsClique () {
+		assertTrue(LivingEntity.isClique(_maliaAndBo));
+		assertTrue(LivingEntity.isClique(_michelleAndBarack));
+		assertFalse(LivingEntity.isClique(_michelleJoeBoAndMalia));
+
+	}
+
 	// TODO: write methods to test findMaximumCliqueOfFriends
 }

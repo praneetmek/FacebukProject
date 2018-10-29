@@ -11,20 +11,7 @@ public class Pet extends LivingEntity {
     {
         _owner = owner;
     }
-    @Override
-    public boolean equals(Object o) {
-        if(o instanceof Person) {
-            Person personOfObject = (Person) o;
-            return _name.equals(personOfObject.getName());
-        }
-        else
-            return false;
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(_name);
-    }
 
 
 }
