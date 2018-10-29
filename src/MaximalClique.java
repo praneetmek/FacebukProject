@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class MaximalClique {
-    private ArrayList<LivingEntity> _listOfMembers;
+    private ArrayList<LivingEntity> _listOfMembers=new ArrayList<LivingEntity>();
 
     public MaximalClique() {
 
@@ -14,5 +14,12 @@ public class MaximalClique {
     }
     public ArrayList<LivingEntity> get_listOfMembers(){
         return _listOfMembers;
+    }
+    public String toString(){
+        String string="";
+        for (LivingEntity livingEntity:_listOfMembers) {
+            string+=livingEntity.getName()+" ";
+        }
+        return string;
     }
 }

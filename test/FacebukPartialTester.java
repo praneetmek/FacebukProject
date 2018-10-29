@@ -13,7 +13,7 @@ public class FacebukPartialTester {
 	private Person _barack, _michelle, _kevin, _ina, _joe, _malia;
 	private Pet _bo, _sunny;
 	private Moment _meAndBarack;
-	private ArrayList _michelleAndBarack, _michelleJoeBoAndMalia, _maliaAndBo;
+	private ArrayList _michelleAndBarack, _michelleJoeBoAndMalia, _maliaAndBo, _barackList,_kevinList, _kevinAndBarack;
 
 	@Before
 	public void setUp () {
@@ -66,6 +66,12 @@ public class FacebukPartialTester {
 		maliaAndSunny.add(_malia);
 		maliaAndSunny.add(_sunny);
 
+		//Kevin and Barack
+		_kevinAndBarack=new ArrayList();
+		_kevinAndBarack.add(_kevin);
+		_kevinAndBarack.add(_barack);
+
+
 		// Malia and Bo
 		_maliaAndBo=new ArrayList();
 		_maliaAndBo.add(_malia);
@@ -73,7 +79,12 @@ public class FacebukPartialTester {
 		// Michelle
 		final ArrayList michelleList = new ArrayList();
 		michelleList.add(_michelle);
-
+		//Barack
+		_barackList = new ArrayList();
+		_barackList.add(_barack);
+		//Kevin
+		_kevinList=new ArrayList();
+		_kevinList.add(_kevin);
 		// Bo
 		final ArrayList boList = new ArrayList<LivingEntity>();
 		boList.add(_bo);
@@ -143,10 +154,8 @@ public class FacebukPartialTester {
 
 	@Test
 	public void testEquals () {
-		System.out.println(_michelle.getName());
+
 		Person person= new Person("Michelle", new Image("Michelle.png"));
-		System.out.println(person.getName());
-		System.out.println(_michelle.equals(new Person("Michelle", new Image("Michelle.png"))));
 
 		assertEquals(_michelle, new Person("Michelle", new Image("Michelle.png")));
 		assertEquals(_michelle, new Person("Michelle", new Image("Michelle2.png")));  // should still work
@@ -185,6 +194,7 @@ public class FacebukPartialTester {
 	}
 
 	// TODO: write more methods to test addFriend
+
 	// TODO: write more methods to test approve
 	
 	// TODO: write more methods to test getFriendWithWhomIAmHappiest 
@@ -200,4 +210,11 @@ public class FacebukPartialTester {
 	}
 
 	// TODO: write methods to test findMaximumCliqueOfFriends
+	@Test
+	public void testFindMaximumCliqueOfFriends(){
+		assertEquals(_kevinList,_michelle.findMaximumCliqueOfFriends());
+		_kevin.addFriend(_barack);
+		_barack.addFriend(_kevin);
+		assertEquals(_kevinAndBarack,_michelle.findMaximumCliqueOfFriends());
+	}
 }
