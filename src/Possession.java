@@ -1,10 +1,10 @@
 
 public class Possession {
 //Data
-    private String name;
-    private Person owner;
-    private Image img;
-    private float price;
+    private String _name;
+    private Person _owner;
+    private Image _img;
+    private float _price;
 
 //Constructor
 
@@ -15,9 +15,9 @@ public class Possession {
      * @param itemPrice
      */
     public Possession(String name, Image itemImg, float itemPrice) {
-        this.name = name;
-        img = itemImg;
-        price = itemPrice;
+        _name = name;
+        _img = itemImg;
+        _price = itemPrice;
     }
 
 //Methods
@@ -27,7 +27,7 @@ public class Possession {
      * @return price
      */
     public float getPrice() {
-        return price;
+        return _price;
     }
 
     /**
@@ -35,34 +35,35 @@ public class Possession {
      * @param person
      */
     public void setOwner(Person person) {
-        owner = person;
+        _owner = person;
     }
 
-    public boolean equals(Possession possession){
-        return possession.getName().equals(name);
+    public boolean equals(Object o){
+        Possession possession=(Possession) o;
+        return possession.getName().equals(_name);
     }
 
     public String getName() {
-        return name;
+        return _name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        _name = name;
     }
 
     public Person getOwner() {
-        return owner;
+        return _owner;
     }
 
     public Image getImg() {
-        return img;
+        return _img;
     }
 
     public void setImg(Image img) {
-        this.img = img;
+        _img = img;
     }
 
     public void setPrice(float price) {
-        this.price = price;
+        _price = price;
     }
 }

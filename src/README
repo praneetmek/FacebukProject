@@ -1,0 +1,10 @@
+README
+
+Two extra data structure were created for this program: LivingEntity and MaximalClique
+
+LivingEntity was created because Persons and Pets had many common methods that
+worked in similar ways.
+
+MaximalClique was created to aid in the solving of finding the maximum possible clique. A
+MaximalClique is essentially a list of persons in a maximAL clique put into a separate class
+so that we wouldn't have nested ArrayLists.

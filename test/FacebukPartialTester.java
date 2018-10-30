@@ -181,6 +181,11 @@ public class FacebukPartialTester {
 		FriendRequest friendRequest1 = new FriendRequest(person1, person2);
 		// Make sure the code also compiles for making friend requests for people and pets
 		FriendRequest friendRequest2 = new FriendRequest(person1, pet1);
+		friendRequest1.approve(person1);
+		friendRequest1.approve(person2);
+		ArrayList<LivingEntity> person2ArrayList=new ArrayList<LivingEntity>();
+		person2ArrayList.add(person2);
+		assertEquals(person1.getFriends(),person2ArrayList);
 	}
 
 	@Test(expected = IllegalArgumentException.class)

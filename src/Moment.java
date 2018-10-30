@@ -1,27 +1,32 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Moment {
-    private String name;
-    private Image image;
-    private ArrayList<LivingEntity> participants;
-    private ArrayList<Float> smileValues;
+    final private String _name;
+    final private Image _image;
+    final private ArrayList<LivingEntity> _participants;
+    final private ArrayList<Float> _smileValues;
 
     public Moment(String name, Image image, ArrayList<LivingEntity> participants, ArrayList<Float> smileValues) {
-        this.name = name;
-        this.image = image;
-        this.participants = participants;
-        this.smileValues = smileValues;
+        _name = name;
+        _image = image;
+        _participants = participants;
+        _smileValues = smileValues;
     }
-    public boolean equals(Moment moment){
-        return name.equals(moment.name);
+
+    public String getName() {
+        return _name;
+    }
+
+    public boolean equals(Object o){
+        Moment moment=(Moment) o;
+        return _name.equals(moment.getName());
     }
 
     public ArrayList<LivingEntity> getParticipants() {
-        return participants;
+        return _participants;
     }
 
     public ArrayList<Float> getSmileValues() {
-        return smileValues;
+        return _smileValues;
     }
 }

@@ -7,7 +7,7 @@ public class LivingEntity
 	
 	protected String _name;
 	private Image _img;
-	private ArrayList<LivingEntity> _friends;
+	private ArrayList<LivingEntity> _friends = new ArrayList<LivingEntity>();
 	private ArrayList<Moment> _moments;
 	
 // Constructor(s)
@@ -45,7 +45,7 @@ public class LivingEntity
 	@Override
 	public boolean equals(Object o) {
 		if (o instanceof LivingEntity) {
-			LivingEntity oToLivingEntity=(LivingEntity) o;
+			final LivingEntity oToLivingEntity=(LivingEntity) o;
 			if(_name==oToLivingEntity.getName()){
 				return true;
 			}
@@ -68,9 +68,9 @@ public class LivingEntity
 	 * @param livingEntity
 	 * @return
 	 */
-	public float getAverageHappiness(LivingEntity livingEntity)
+	private float getAverageHappiness(LivingEntity livingEntity)
 	{
-		ArrayList<Float> happinessValues = new ArrayList<Float>();
+		final ArrayList<Float> happinessValues = new ArrayList<Float>();
 		float sum=0;
 		for (Moment moment : _moments)
 		{
@@ -123,24 +123,24 @@ public class LivingEntity
 		return happiestMoment;
 	}
 	public ArrayList findMaximumCliqueOfFriends(){
-		ArrayList<MaximalClique> allMaximalCliques = new ArrayList<MaximalClique>();
+		final ArrayList<MaximalClique> allMaximalCliques = new ArrayList<MaximalClique>();
 		MaximalClique maximumClique=new MaximalClique();
-		int largestClique=0;
+		int largestCliqueSize=0;
 		for(LivingEntity livingEntity:_friends){
 			allMaximalCliques.add(createMaximalClique(livingEntity));
 		}
 		for(MaximalClique maximalClique: allMaximalCliques){
-			if(maximalClique.size()>largestClique){
+			if(maximalClique.size()>largestCliqueSize){
 				maximumClique=maximalClique;
-				largestClique=maximalClique.size();
+				largestCliqueSize=maximalClique.size();
 			}
 		}
-		System.out.println(maximumClique.toString());
+//		System.out.println(maximumClique.toString());
 		return maximumClique.get_listOfMembers();
 
 
 	}
-	public MaximalClique createMaximalClique(LivingEntity friend){
+	private MaximalClique createMaximalClique(LivingEntity friend){
 		MaximalClique maximalClique=new MaximalClique();
 		maximalClique.add(friend);
 		ArrayList<LivingEntity> temporaryClique;
